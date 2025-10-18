@@ -35,11 +35,13 @@ const App: React.FC = () => {
 
 
   const handleStartGame = useCallback(() => {
+    audioManager.play('start');
     setScore(0);
     setGameState(GameState.PLAYING);
   }, []);
 
   const handleGameOver = useCallback((finalScore: number) => {
+    audioManager.play('gameOver');
     setScore(finalScore);
     if (finalScore > highScore) {
       setHighScore(finalScore);
